@@ -63,12 +63,11 @@ def cmap_plot(Y, ymin=0, ymax=1, n=50, cmap="magma", y0=0):
                 V[:, 1] += y0
                 verts.append(V)
                 colors.append(cmap(cnorm(y)))
-        else:
-            if I.exterior.coords:
-                V = np.array(I.exterior.coords)
-                V[:, 1] += y0
-                verts.append(V)
-                colors.append(cmap(cnorm(y)))
+        elif I.exterior.coords:
+            V = np.array(I.exterior.coords)
+            V[:, 1] += y0
+            verts.append(V)
+            colors.append(cmap(cnorm(y)))
 
     return verts, colors
 

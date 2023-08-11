@@ -42,7 +42,15 @@ text.set_position(position)
 for name, y in yoffset.items():
     y = position[1] - y + yoffset[verticalalignment]
     plt.plot([0.1, 3.75], [y, y], linewidth=0.5, color=color)
-    plt.text(3.75, y, " " + name, color=color, ha="left", va="center", size="x-small")
+    plt.text(
+        3.75,
+        y,
+        f" {name}",
+        color=color,
+        ha="left",
+        va="center",
+        size="x-small",
+    )
 
 for name, x in xoffset.items():
     x = position[0] - x + xoffset[horizontalalignment]

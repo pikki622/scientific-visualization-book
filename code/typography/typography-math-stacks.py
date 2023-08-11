@@ -27,7 +27,7 @@ def plot(family):
     ax.text(
         0,
         -0.1,
-        'mathtext.fontset = "%s"' % family,
+        f'mathtext.fontset = "{family}"',
         size=14,
         ha="center",
         va="top",
@@ -36,7 +36,7 @@ def plot(family):
     )
 
     # plt.tight_layout()
-    plt.savefig("../../figures/typography/typography-math-%s.pdf" % family, dpi=600)
+    plt.savefig(f"../../figures/typography/typography-math-{family}.pdf", dpi=600)
     plt.show()
 
 

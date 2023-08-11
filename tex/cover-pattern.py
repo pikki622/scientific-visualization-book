@@ -14,9 +14,7 @@ patches = []
 for y in range(11,-1,-1):
     for x in range(8,-1,-1):
         center = 2*x*radius + y%2*radius, y*radius
-        for i,r in enumerate(np.linspace(25, 2.5, 10)):
-            patches.append(plt.Circle(center, r))
-
+        patches.extend(plt.Circle(center, r) for r in np.linspace(25, 2.5, 10))
 collection = PatchCollection(patches, edgecolors="0.1", facecolors='black')
 ax.add_collection(collection)
 

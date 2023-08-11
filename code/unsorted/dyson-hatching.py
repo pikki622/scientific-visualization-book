@@ -108,7 +108,11 @@ def blue_noise(shape, radius, k=32, seed=None):
             theta = rng.uniform(0, 2 * pi)
             r = radius * np.sqrt(rng.uniform(1, 4))
             p = qx + r * cos(theta), qy + r * sin(theta)
-            if not (0 <= p[0] < width and 0 <= p[1] < height) or not fits(p, radius):
+            if (
+                not 0 <= p[0] < width
+                or not 0 <= p[1] < height
+                or not fits(p, radius)
+            ):
                 continue
             queue.append(p)
             gx, gy = grid_coords(p)
@@ -152,14 +156,13 @@ S = []
 vor = scipy.spatial.Voronoi(P)
 for i in range(len(vor.point_region)):
     region = vor.regions[vor.point_region[i]]
-    if not -1 in region:
+    if -1 not in region:
         verts = np.array([vor.vertices[i] for i in region])
         poly = shapely.geometry.Polygon(verts)
         H = 1.25 * D[i, 1] * hatch(h) + P[i]
         for i in range(len(H)):
             line = shapely.geometry.LineString(H[i])
-            intersect = poly.intersection(line)
-            if intersect:
+            if intersect := poly.intersection(line):
                 S.append(intersect.coords)
 
 # Grey background using thick lines
@@ -234,7 +237,7 @@ for i in range(4):
 V = V.reshape(16, 3, 2)
 V = 0.9 * V / 5 + (9, 1)
 FC = np.zeros((16, 4))
-FC[0::2] = 0, 0, 0, 1
+FC[::2] = 0, 0, 0, 1
 FC[1::2] = 1, 1, 1, 1
 collection = PolyCollection(V, edgecolors="black", facecolors=FC, lw=0.75, zorder=20)
 ax.add_collection(collection)

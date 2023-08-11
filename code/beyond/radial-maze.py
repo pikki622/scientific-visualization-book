@@ -31,11 +31,14 @@ for i in range(n_arms):
     # Build arm start (pie)
     t0 = theta - 0.5 / n_arms * 2 * np.pi
     t1 = theta + 0.5 / n_arms * 2 * np.pi
-    V = []
-    for t in np.linspace(t0, t1, 25):
-        V.append(1.00 * inner_radius * np.array([np.cos(t), np.sin(t)]))
-    for t in np.linspace(t1, t0, 25):
-        V.append(0.25 * inner_radius * np.array([np.cos(t), np.sin(t)]))
+    V = [
+        1.00 * inner_radius * np.array([np.cos(t), np.sin(t)])
+        for t in np.linspace(t0, t1, 25)
+    ]
+    V.extend(
+        0.25 * inner_radius * np.array([np.cos(t), np.sin(t)])
+        for t in np.linspace(t1, t0, 25)
+    )
     V.append(V[-1])
     C.append(V)
 

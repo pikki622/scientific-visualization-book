@@ -262,7 +262,7 @@ for palette, y in zip(colors.keys(), range(0, ny * dy, dy)):
         )
         ax.add_patch(fancy)
 
-        name = "%s %s" % (palette.upper(), level)
+        name = f"{palette.upper()} {level}"
         ax.text(
             x,
             y - 0.15 * dy,

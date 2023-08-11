@@ -53,4 +53,4 @@ sigma_i = 1.00
 A_i = 0.65
 alpha = 12.5
 tau = 10 * millisecond
-scale = 40.0 * 40.0 / (n * n)
+scale = 40.0 * 40.0 / n**2

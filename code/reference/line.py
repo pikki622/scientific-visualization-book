@@ -81,7 +81,7 @@ for x0, x1, style in zip(X0, X1, styles):
     ax.text(
         (x0 + x1) / 2,
         y - 0.2,
-        '"%s"' % style,
+        f'"{style}"',
         size="x-small",
         ha="center",
         va="top",
@@ -125,7 +125,7 @@ for x0, x1, style in zip(X0, X1, styles):
     ax.text(
         (x0 + x1) / 2,
         y - 0.2,
-        '"%s"' % style,
+        f'"{style}"',
         size="x-small",
         ha="center",
         va="top",
@@ -159,11 +159,7 @@ for x0, x1, style in zip(X0, X1, styles):
         dash_capstyle="round",
         linewidth=3,
     )
-    if isinstance(style, str):
-        text = '"%s"' % style
-    else:
-        text = "%s" % str(style)
-
+    text = f'"{style}"' if isinstance(style, str) else f"{str(style)}"
     ax.text(
         (x0 + x1) / 2,
         y - 0.2,
@@ -199,7 +195,7 @@ for i, (x0, x1) in enumerate(zip(X0, X1)):
     plt.text(
         (x0 + x1) / 2,
         y - 0.2,
-        "%s" % bool(i),
+        f"{bool(i)}",
         size="x-small",
         ha="center",
         va="top",

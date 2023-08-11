@@ -19,36 +19,18 @@ def simulate():
     C = np.random.randint(0, 2, n)
 
     for i in range(n):
-        # Asynchronous
-        if 0:
-            if C[i]:
-                x += (alpha + (x - y)) * (1 - x) * dt
-                x = max(x, 0.0)
-                y += (alpha + (y - x)) * (1 - y) * dt
-                y = max(y, 0.0)
-            else:
-                y += (alpha + (y - x)) * (1 - y) * dt
-                y = max(y, 0.0)
-                x += (alpha + (x - y)) * (1 - x) * dt
-                x = max(x, 0.0)
-        # Synchronous
-        else:
-            dx = (alpha + (x - y)) * (1 - x) * dt
-            dy = (alpha + (y - x)) * (1 - y) * dt
-            x = max(x + dx, 0.0)
-            y = max(y + dy, 0.0)
+        dx = (alpha + (x - y)) * (1 - x) * dt
+        dy = (alpha + (y - x)) * (1 - y) * dt
+        x = max(x + dx, 0.0)
+        y = max(y + dy, 0.0)
         X[i] = x
         Y[i] = y
     return X, Y
 
 
 np.random.seed(11)
-S = []
 n = 250
-for i in range(n):
-    S.append(simulate())
-
-
+S = [simulate() for _ in range(n)]
 plt.figure(figsize=(20, 10))
 ax = plt.subplot(121, aspect=1)
 axins = zoomed_inset_axes(ax, 25, loc=3)
@@ -56,11 +38,10 @@ for i in range(n):
     X, Y = S[i]
     if X[-1] > 0.9 and Y[-1] > 0.9:
         c = "r"
-        lw = 1.0
         axins.scatter(X[0], Y[0], c="r", edgecolor="w", zorder=10)
     else:
         c = "b"
-        lw = 1.0
+    lw = 1.0
     ax.plot(X, Y, c=c, alpha=0.25, lw=lw)
     axins.plot(X, Y, c=c, alpha=0.25, lw=lw)
 
@@ -78,6 +59,7 @@ ax = plt.subplot(122, aspect=1)
 axins = zoomed_inset_axes(ax, 50, loc=3)
 axins.set_facecolor((1, 1, 0.9))
 n = 9
+lw = 2.0
 for i in range(n):
     X, Y = S[i]
     ls = "-"
@@ -85,11 +67,9 @@ for i in range(n):
         ls = "--"
     if X[-1] > 0.9 and Y[-1] > 0.9:
         c = "r"
-        lw = 2.0
         axins.scatter(X[0], Y[0], s=150, c="r", edgecolor="w", zorder=10, lw=2)
     else:
         c = "b"
-        lw = 2.0
     ax.plot(X, Y, c=c, alpha=0.75, lw=lw, ls=ls)
     axins.plot(X, Y, c=c, alpha=0.75, lw=lw, ls=ls)
 

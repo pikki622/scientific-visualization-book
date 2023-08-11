@@ -123,7 +123,7 @@ plt.scatter([0], [0], 20, facecolor="white", edgecolor="black", zorder=1000)
 np.random.seed(123)
 n = 145
 T = 2 * np.pi / n + np.linspace(0, 2 * np.pi, n)
-T[1::2] = T[0:-1:2]
+T[1::2] = T[:-1:2]
 R = np.random.uniform(400, 800, n)
 R[-1] = R[0]
 R[1:-1:2] = R[2::2]

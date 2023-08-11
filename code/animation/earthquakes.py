@@ -39,7 +39,7 @@ def rain_update(frame):
 feed = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/"
 
 # Magnitude > 4.5
-url = urllib.request.urlopen(feed + "4.5_month.csv")
+url = urllib.request.urlopen(f"{feed}4.5_month.csv")
 
 # Reading and storage of data
 data = url.read().split(b"\n")[+1:-1]

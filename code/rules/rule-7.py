@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 n = 20
-Z = np.linspace(0, 1, n * n).reshape(n, n)
+Z = np.linspace(0, 1, n**2).reshape(n, n)
 Z = (Z - Z.min()) / (Z.max() - Z.min())
 Z += np.random.uniform(0, 1, (n, n))
 

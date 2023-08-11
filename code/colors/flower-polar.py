@@ -17,6 +17,7 @@ def flower(ax, n_branches=24, n_sections=4, lw=1):
     facecolors = []
     n_sections += 1
 
+    v = 1.00
     for i in range(n_branches):
         for j in range(n_sections - 1):
             R_, T_ = [], []
@@ -80,7 +81,6 @@ def flower(ax, n_branches=24, n_sections=4, lw=1):
             paths.append(P)
             h = i / n_branches
             s = 0.5 + 0.5 * j / (n_sections - 1)
-            v = 1.00
             facecolors.append(colors.hsv_to_rgb([h, s, v]))
 
     collection = PolyCollection(

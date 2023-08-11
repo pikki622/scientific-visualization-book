@@ -83,7 +83,11 @@ def generate(shape, radius, k=32, seed=None):
             theta = rng.uniform(0, 2 * pi)
             r = radius * np.sqrt(rng.uniform(1, 4))
             p = qx + r * cos(theta), qy + r * sin(theta)
-            if not (0 <= p[0] < width and 0 <= p[1] < height) or not fits(p, radius):
+            if (
+                not 0 <= p[0] < width
+                or not 0 <= p[1] < height
+                or not fits(p, radius)
+            ):
                 continue
             queue.append(p)
             gx, gy = grid_coords(p)

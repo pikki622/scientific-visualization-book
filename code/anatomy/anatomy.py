@@ -19,9 +19,7 @@ ax = fig.add_subplot(1, 1, 1, aspect=1)
 
 
 def minor_tick(x, pos):
-    if not x % 1.0:
-        return ""
-    return "%.2f" % x
+    return "" if not x % 1.0 else "%.2f" % x
 
 
 ax.xaxis.set_major_locator(MultipleLocator(1.000))
