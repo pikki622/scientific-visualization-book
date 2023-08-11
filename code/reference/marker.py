@@ -24,7 +24,7 @@ for x, c in zip(X, C):
     plt.text(
         x,
         y - 0.25,
-        '"%s"' % c,
+        f'"{c}"',
         size="x-small",
         ha="center",
         va="top",
@@ -54,7 +54,7 @@ for x, c in zip(X, C):
     plt.text(
         x,
         y - 0.25,
-        '"%s"' % c,
+        f'"{c}"',
         size="x-small",
         ha="center",
         va="top",
@@ -146,7 +146,7 @@ for x, marker in zip(X, M):
     plt.text(
         x,
         y - 0.25,
-        '"%s"' % marker,
+        f'"{marker}"',
         size="x-small",
         ha="center",
         va="top",
@@ -171,11 +171,7 @@ y -= 1
 # -----------------------------------------------------------------------------
 M = ["1", "2", "3", "4", "+", "x", "|", "_", 4, 5, 6, 7]
 for x, marker in zip(X, M):
-    if isinstance(marker, str):
-        text = '"%s"' % marker
-    else:
-        text = "%s" % marker
-
+    text = f'"{marker}"' if isinstance(marker, str) else f"{marker}"
     plt.scatter(x, y, s=256, color="black", marker="s", fc=".9", ec="none")
     plt.scatter(
         x, y, s=100, color="black", marker=marker, fc="none", ec="black", linewidth=0.75
@@ -208,7 +204,7 @@ for x, marker in zip(X, M):
         y,
         s=100,
         color="black",
-        marker="$" + marker + "$",
+        marker=f"${marker}$",
         fc="black",
         ec="none",
         linewidth=0.5,
@@ -264,7 +260,7 @@ for x0, mark in zip(X0, marks):
     ax.text(
         (X[0] + X[-1]) / 2,
         y - 0.1,
-        "%s" % str(mark),
+        f"{str(mark)}",
         size="x-small",
         ha="center",
         va="top",

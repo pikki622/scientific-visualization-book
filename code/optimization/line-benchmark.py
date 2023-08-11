@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 from timeit import default_timer as timer
 
 n_lines, n_points = 1_000, 2
-X = [np.random.uniform(0, 1, n_points) for i in range(n_lines)]
-Y = [np.random.uniform(0, 1, n_points) for i in range(n_lines)]
+X = [np.random.uniform(0, 1, n_points) for _ in range(n_lines)]
+Y = [np.random.uniform(0, 1, n_points) for _ in range(n_lines)]
 
 fig = plt.figure(figsize=(9, 3.5))
 

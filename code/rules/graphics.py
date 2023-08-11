@@ -40,12 +40,12 @@ from projections import *
 def polar_frame(ax, title=None, legend=False, zoom=False, labels=True):
     """ Draw a polar frame """
 
+    n = 500
     for rho in [0, 2, 5, 10, 20, 40, 60, 80, 90]:
         lw, color, alpha = 1, "0.00", 0.25
         if rho == 90 and not zoom:
             color, lw, alpha = "0.00", 2, 1
 
-        n = 500
         R = np.ones(n) * rho / 90.0
         T = np.linspace(-np.pi / 2, np.pi / 2, n)
         X, Y = polar_to_cartesian(R, T)
@@ -61,13 +61,13 @@ def polar_frame(ax, title=None, legend=False, zoom=False, labels=True):
                 verticalalignment="center",
             )
 
+    n = 500
     for theta in [-90, -60, -30, 0, +30, +60, +90]:
         lw, color, alpha = 1, "0.00", 0.25
         if theta in [-90, +90] and not zoom:
             color, lw, alpha = "0.00", 2, 1
         angle = theta / 90.0 * np.pi / 2
 
-        n = 500
         R = np.linspace(0, 1, n)
         T = np.ones(n) * angle
         X, Y = polar_to_cartesian(R, T)
@@ -122,12 +122,12 @@ def polar_frame(ax, title=None, legend=False, zoom=False, labels=True):
 def logpolar_frame(ax, title=None, legend=False, labels=True):
     """ Draw a log polar frame """
 
+    n = 500
     for rho in [2, 5, 10, 20, 40, 60, 80, 90]:
         lw, color, alpha = 1, "0.00", 0.25
         if rho == 90:
             color, lw, alpha = "0.00", 2, 1
 
-        n = 500
         R = np.ones(n) * rho / 90.0
         T = np.linspace(-np.pi / 2, np.pi / 2, n)
         X, Y = polar_to_logpolar(R, T)
@@ -143,13 +143,13 @@ def logpolar_frame(ax, title=None, legend=False, labels=True):
                 verticalalignment="bottom",
             )
 
+    n = 500
     for theta in [-90, -60, -30, 0, +30, +60, +90]:
         lw, color, alpha = 1, "0.00", 0.25
         if theta in [-90, +90]:
             color, lw, alpha = "0.00", 2, 1
         angle = theta / 90.0 * np.pi / 2
 
-        n = 500
         R = np.linspace(0, 1, n)
         T = np.ones(n) * angle
         X, Y = polar_to_logpolar(R, T)

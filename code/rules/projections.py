@@ -61,7 +61,7 @@ def polar_to_logpolar(rho, theta):
     xmin, xmax = 0.0, 4.80743279742
     ymin, ymax = -2.76745559565, 2.76745559565
     rho = rho * 90.0
-    x = Bx * np.log(np.sqrt(rho * rho + 2 * A * rho * np.cos(theta) + A * A) / A)
+    x = Bx * np.log(np.sqrt(rho * rho + 2 * A * rho * np.cos(theta) + A**2) / A)
     y = By * np.arctan(rho * np.sin(theta) / (rho * np.cos(theta) + A))
     x = (x - xmin) / (xmax - xmin)
     y = (y - ymin) / (ymax - ymin)

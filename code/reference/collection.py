@@ -175,7 +175,7 @@ y -= 1
 # ----------------------------------------------------------------------------
 n = 10
 paths = []
-for i in range(n):
+for _ in range(n):
     angle1 = np.random.randint(0, 180)
     angle2 = angle1 + np.random.randint(180, 270)
     path = mpath.Path.wedge(angle1, angle2)

@@ -19,14 +19,16 @@ def sphere(radius=1.0, slices=32, stacks=32):
     indices = []
     for i in range(stacks - 1):
         for j in range(slices - 1):
-            indices.append(i * (slices) + j)
-            indices.append(i * (slices) + j + 1)
-            indices.append(i * (slices) + j + slices + 1)
-
-            indices.append(i * (slices) + j + slices + 1)
-            indices.append(i * (slices) + j + slices)
-            indices.append(i * (slices) + j)
-
+            indices.extend(
+                (
+                    i * (slices) + j,
+                    i * (slices) + j + 1,
+                    i * (slices) + j + slices + 1,
+                    i * (slices) + j + slices + 1,
+                    i * (slices) + j + slices,
+                    i * (slices) + j,
+                )
+            )
     indices = np.array(indices)
     indices = indices.reshape(len(indices) // 3, 3)
     return vertices, indices

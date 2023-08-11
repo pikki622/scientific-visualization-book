@@ -16,10 +16,10 @@ ax = plt.subplot(xlim=[0, 20], ylim=[-0.5, 1])
 
 X = np.linspace(0, 20, 1000, endpoint=True)
 n = 6
+linestyle = "-"
 for i in range(n):
     Ji = jn(i, X)
     linewidth = 1.5 if i == 0 else 1
-    linestyle = "-" if i == 0 else "-"
     color = "C1" if i == 0 else "%.2f" % (i / n)
     label = r"$J_%d$" % i
 

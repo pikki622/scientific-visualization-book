@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 def annotate(ax, x, y, text, fc="#ff7777", y0=0):
     y = y - 0.5
     ax.annotate(
-        " " + text + " ",
+        f" {text} ",
         xy=(x, y),
         xycoords="data",
         xytext=(0, 12),

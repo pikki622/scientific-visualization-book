@@ -44,7 +44,7 @@ fig = plt.figure(figsize=(9, 3.25))
 ax = plt.subplot(1, 3, 1, aspect=1, xlim=[0, 10], xticks=[], ylim=[0, 10], yticks=[])
 for i in range(len(V.point_region)):
     region = V.regions[V.point_region[i]]
-    if not -1 in region:
+    if -1 not in region:
         verts = np.array([V.vertices[i] for i in region])
         cell = plt.Polygon(verts, edgecolor=".25", facecolor="None")
         ax.add_artist(cell)
@@ -57,7 +57,7 @@ ax = plt.subplot(1, 3, 2, aspect=1, xlim=[0, 10], xticks=[], ylim=[0, 10], ytick
 S = []
 for i in range(len(V.point_region)):
     region = V.regions[V.point_region[i]]
-    if not -1 in region:
+    if -1 not in region:
         verts = np.array([V.vertices[i] for i in region])
         S.extend((1.25 * D[i, 1] * hatch(5) + P[i]))
 ax.add_collection(LineCollection(S, color="black"))
@@ -69,13 +69,12 @@ ax = plt.subplot(1, 3, 3, aspect=1, xlim=[0, 10], xticks=[], ylim=[0, 10], ytick
 S = []
 for i in range(len(V.point_region)):
     region = V.regions[V.point_region[i]]
-    if not -1 in region:
+    if -1 not in region:
         verts = np.array([V.vertices[i] for i in region])
         poly = shapely.geometry.Polygon(verts)
         for l in 1.25 * D[i, 1] * hatch(5) + P[i]:
             line = shapely.geometry.LineString(l)
-            intersect = poly.intersection(line)
-            if intersect:
+            if intersect := poly.intersection(line):
                 S.append(intersect.coords)
 ax.add_collection(LineCollection(S, color="black"))
 ax.set_title("Clipped hatches")

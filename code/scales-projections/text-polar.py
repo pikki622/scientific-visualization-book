@@ -84,7 +84,7 @@ label("AUTUMN", 10.5 * 2 * np.pi / 12, 1 + size, 0.0125)
 ax = fig.add_axes([0.15, 0.15, 0.7, 0.7], projection="polar")
 
 # Some ellipses that will enforce polar projection
-for i in range(250):
+for _ in range(250):
     p = np.random.uniform(0, 2 * np.pi), np.random.uniform(0.05, 0.95)
     w = h = 0.01 + 0.05 * np.random.uniform(1, 2)
     color = colors[int(np.floor((p[0] / (2 * np.pi)) * 12))]

@@ -52,9 +52,7 @@ def gaussian(shape=(25, 25), width=0.5, center=0.0):
         width = (width,) * len(shape)
     if type(center) in [float, int]:
         center = (center,) * len(shape)
-    grid = []
-    for size in shape:
-        grid.append(slice(0, size))
+    grid = [slice(0, size) for size in shape]
     C = np.mgrid[tuple(grid)]
     R = np.zeros(shape)
     for i, size in enumerate(shape):
@@ -111,9 +109,7 @@ def best_fft_shape(shape):
             while n % b == 0:
                 n /= b
                 factors.append(b)
-        if n == 1:
-            return factors
-        return []
+        return factors if n == 1 else []
 
     def is_optimal(n):
         factors = factorize(n)

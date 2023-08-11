@@ -61,7 +61,7 @@ def yrotate(theta):
 def obj_load(filename):
     V, Vi = [], []
     with open(filename) as f:
-        for line in f.readlines():
+        for line in f:
             if line.startswith("#"):
                 continue
             values = line.split()

@@ -51,7 +51,7 @@ def yrotate(theta):
 # Data processing
 V, F = [], []
 with open("bunny.obj") as f:
-    for line in f.readlines():
+    for line in f:
         if line.startswith("#"):
             continue
         values = line.split()

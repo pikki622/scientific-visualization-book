@@ -57,13 +57,8 @@ def metropolis(width=10000, height=10000, n=11000, step=75, branching=0.1, noise
 
 np.random.seed(12345)
 width, height, border = 10000, 10000, 500
-if 1:  # Set to 0 after computation
-    edges = metropolis(width, height)
-    np.save("egdes.npy", edges)
-else:
-    edges = np.load("egdes.npy")
-
-
+edges = metropolis(width, height)
+np.save("egdes.npy", edges)
 segments = []
 for edge in edges:
     x0, y0, x1, y1, level = edge

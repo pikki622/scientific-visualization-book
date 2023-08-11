@@ -17,7 +17,7 @@ feed = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/"
 # url = urllib.request.urlopen(feed + "significant_month.csv")
 
 # Earthquakes of magnitude > 4.5 in the past 30 days
-url = urllib.request.urlopen(feed + "4.5_month.csv")
+url = urllib.request.urlopen(f"{feed}4.5_month.csv")
 
 # Earthquakes of magnitude > 2.5 in the past 30 days
 # url = urllib.request.urlopen(feed + "2.5_month.csv")

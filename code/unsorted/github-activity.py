@@ -34,15 +34,18 @@ def github_contrib(user, year):
     n = 1 + (date(year, 12, 31) - date(year, 1, 1)).days
     C = -np.ones(n, dtype=int)
 
+
+
     class HTMLParser(html.parser.HTMLParser):
         def handle_starttag(self, tag, attrs):
             if tag == "rect":
-                data = {key: value for (key, value) in attrs}
+                data = dict(attrs)
                 date = dateutil.parser.parse(data["data-date"])
                 count = int(data["data-count"])
                 day = date.timetuple().tm_yday - 1
                 if count > 0:
                     C[day] = count
+
 
     parser = HTMLParser()
     parser.feed(contents)
@@ -116,7 +119,7 @@ def calmap(ax, year, data, origin="upper", weekstart="sun"):
     if origin == "upper":
         labels = labels[::-1]
     ax.set_yticklabels(labels)
-    ax.set_title("{}".format(year), size="medium", weight="bold")
+    ax.set_title(f"{year}", size="medium", weight="bold")
 
     # Showing data
     cmap = plt.cm.get_cmap("Purples")

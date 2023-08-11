@@ -42,23 +42,10 @@ def plot(ax, xmax=1, ymax=1):
     ax.set_title("Title", family="Roboto", weight=500)
 
 
-if 0:  # No constraints
-    plot(plt.subplot(gspec[0, 0]))
-    plot(plt.subplot(gspec[1, 0]))
-    plot(plt.subplot(gspec[0, 1]))
-    plot(plt.subplot(gspec[1, 1]))
-
-if 0:  # Aspect is constrained
-    plot(plt.subplot(gspec[0, 0]))
-    plot(plt.subplot(gspec[1, 0], aspect=1))
-    plot(plt.subplot(gspec[0, 1], aspect=1))
-    plot(plt.subplot(gspec[1, 1], aspect=1))
-
-if 1:  # Aspect is constrained but limits fit
-    plot(plt.subplot(gspec[0, 0]))
-    plot(plt.subplot(gspec[1, 0], aspect=1), ymax=2)
-    plot(plt.subplot(gspec[0, 1], aspect=1), xmax=2)
-    plot(plt.subplot(gspec[1, 1], aspect=1), xmax=2, ymax=2)
+plot(plt.subplot(gspec[0, 0]))
+plot(plt.subplot(gspec[1, 0], aspect=1), ymax=2)
+plot(plt.subplot(gspec[0, 1], aspect=1), xmax=2)
+plot(plt.subplot(gspec[1, 1], aspect=1), xmax=2, ymax=2)
 
 plt.savefig("../../figures/layout/layout-aspect-3.pdf")
 plt.show()

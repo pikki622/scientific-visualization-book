@@ -159,7 +159,7 @@ ax.add_patch(walls)
 # ax.text(3.5, 7.5, "X",
 #         family="Morris Roman", size=24, zorder=20, ha="center", va="center")
 
-for i in range(30):
+for _ in range(30):
     ellipse = Ellipse(
         xy=np.random.uniform(1, 12, 2),
         width=np.random.uniform(0.05, 0.15),
@@ -174,7 +174,7 @@ for i in range(30):
     ax.add_artist(ellipse)
     ellipse.set_clip_path(walls)
 
-for i in range(20):
+for _ in range(20):
     ellipse = Ellipse(
         xy=np.random.normal(2, 0.2, 2),
         width=np.random.uniform(0.05, 0.15),
@@ -196,14 +196,16 @@ S = []
 vor = scipy.spatial.Voronoi(P)
 for i in range(len(vor.point_region)):
     region = vor.regions[vor.point_region[i]]
-    if not -1 in region and min(seg_dists(vor.points[i], Walls[:-1], Walls[1:])) < 0.35:
+    if (
+        -1 not in region
+        and min(seg_dists(vor.points[i], Walls[:-1], Walls[1:])) < 0.35
+    ):
         verts = np.array([vor.vertices[i] for i in region])
         poly = shapely.geometry.Polygon(verts)
         H = 1.25 * D[i, 1] * hatch(h) + P[i]
         for i in range(len(H)):
             line = shapely.geometry.LineString(H[i])
-            intersect = poly.intersection(line)
-            if intersect:
+            if intersect := poly.intersection(line):
                 S.append(intersect.coords)
 
 # Grey background using thick lines

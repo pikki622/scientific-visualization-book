@@ -35,7 +35,7 @@ for x, pattern in zip(X, patterns):
     plt.text(
         x + w / 2,
         y - 0.125,
-        '"%s"' % pattern,
+        f'"{pattern}"',
         size="x-small",
         ha="center",
         va="top",
@@ -70,7 +70,7 @@ for x, pattern in zip(X, patterns):
     plt.text(
         x + w / 2,
         y - 0.125,
-        '"%s"' % pattern,
+        f'"{pattern}"',
         size="x-small",
         ha="center",
         va="top",

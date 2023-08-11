@@ -33,8 +33,7 @@ def smooth2d(A, sigma=3):
     A1 = np.array([smooth1d(x, window_len) for x in np.asarray(A)])
     A2 = np.transpose(A1)
     A3 = np.array([smooth1d(x, window_len) for x in A2])
-    A4 = np.transpose(A3)
-    return A4
+    return np.transpose(A3)
 
 
 class BaseFilter(object):
@@ -56,10 +55,7 @@ class BaseFilter(object):
 
 class OffsetFilter(BaseFilter):
     def __init__(self, offsets=None):
-        if offsets is None:
-            self.offsets = (0, 0)
-        else:
-            self.offsets = offsets
+        self.offsets = (0, 0) if offsets is None else offsets
 
     def get_pad(self, dpi):
         return int(max(*self.offsets) / 72.0 * dpi)
@@ -67,18 +63,14 @@ class OffsetFilter(BaseFilter):
     def process_image(self, padded_src, dpi):
         ox, oy = self.offsets
         a1 = np.roll(padded_src, int(ox / 72.0 * dpi), axis=1)
-        a2 = np.roll(a1, -int(oy / 72.0 * dpi), axis=0)
-        return a2
+        return np.roll(a1, -int(oy / 72.0 * dpi), axis=0)
 
 
 class GaussianFilter(BaseFilter):
     def __init__(self, sigma, alpha=0.5, color=None):
         self.sigma = sigma
         self.alpha = alpha
-        if color is None:
-            self.color = (0, 0, 0)
-        else:
-            self.color = color
+        self.color = (0, 0, 0) if color is None else color
 
     def get_pad(self, dpi):
         return int(self.sigma * 3 / 72.0 * dpi)
@@ -101,8 +93,7 @@ class DropShadowFilter(BaseFilter):
 
     def process_image(self, padded_src, dpi):
         t1 = self.gauss_filter.process_image(padded_src, dpi)
-        t2 = self.offset_filter.process_image(t1, dpi)
-        return t2
+        return self.offset_filter.process_image(t1, dpi)
 
 
 class FilteredArtistList(Artist):
@@ -123,12 +114,11 @@ class FilteredArtistList(Artist):
 # -----------------------------------------------------------------------------
 class RangeDict(dict):
     def __getitem__(self, item):
-        if type(item) != range:
-            for key in self:
-                if item in key:
-                    return self[key]
-        else:
+        if type(item) == range:
             return super().__getitem__(item)
+        for key in self:
+            if item in key:
+                return self[key]
 
 
 _ax1_title = RangeDict(
@@ -219,10 +209,7 @@ _ax3_spines_color = RangeDict(
 _direct_label = RangeDict({range(1, 35): False, range(35, 36): True})
 
 
-if len(sys.argv) > 1:
-    frame = int(sys.argv[1])
-else:
-    frame = 1
+frame = int(sys.argv[1]) if len(sys.argv) > 1 else 1
 frame = max(min(frame, 36), 1)
 
 

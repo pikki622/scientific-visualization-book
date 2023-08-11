@@ -37,7 +37,7 @@ plot1, plot2 = plot(ax)
 ax.text(
     X[-1],
     C[-1],
-    " — " + plot1.get_label(),
+    f" — {plot1.get_label()}",
     size="small",
     color=plot1.get_color(),
     ha="left",
@@ -46,7 +46,7 @@ ax.text(
 ax.text(
     X[-1],
     S[-1],
-    " — " + plot2.get_label(),
+    f" — {plot2.get_label()}",
     size="small",
     color=plot2.get_color(),
     ha="left",
@@ -58,7 +58,7 @@ plot1, plot2 = plot(ax)
 ax.text(
     X[100],
     C[100],
-    " " + plot1.get_label(),
+    f" {plot1.get_label()}",
     family="Roboto Condensed",
     size="small",
     bbox=dict(facecolor="white", edgecolor="None", alpha=0.85),
@@ -70,7 +70,7 @@ ax.text(
 ax.text(
     X[200],
     S[200],
-    " " + plot2.get_label(),
+    f" {plot2.get_label()}",
     rotation=42.5,
     family="Roboto Condensed",
     size="small",

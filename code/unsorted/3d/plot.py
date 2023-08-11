@@ -266,10 +266,7 @@ def mesh(
 
     # Separate 2d triangles from zbuffer
     triangles = T[:, :, :2]
-    antialiased = True
-    if linewidth == 0.0:
-        antialiased = False
-
+    antialiased = linewidth != 0.0
     # Sort triangles according to z buffer
     I = np.argsort(Z)
     triangles = triangles[I, :]

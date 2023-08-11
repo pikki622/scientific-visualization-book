@@ -28,7 +28,7 @@ def line(A, B, thickness=0.005, n=100):
 
 
 a, b = 11, 9
-y = 2 * np.pi / (a + b * b / a)
+y = 2 * np.pi / (a + b**2 / a)
 x = b * y / a
 v1, v2 = np.array([x, y]), np.array([-y, x])
 

@@ -257,7 +257,7 @@ def bars(origin, color, n, index):
         color=[material[color][1 + 2 * i] for i in range(n)],
     )
     ax.plot([origin - 0.5, origin + n + 0.5], [0, 0], color="black", lw=2.5)
-    ax.text(origin + n / 2, -1, "Group " + index, va="top", ha="center")
+    ax.text(origin + n / 2, -1, f"Group {index}", va="top", ha="center")
 
 
 ax.axhline(50, 0.05, 1, color="0.5", linewidth=0.5, linestyle="--", zorder=-10)

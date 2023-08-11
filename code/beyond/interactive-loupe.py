@@ -27,10 +27,10 @@ def plot(ax):
     ax.yaxis.set_major_locator(ticker.MultipleLocator(1.0))
     ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.25))
     ax.yaxis.set_minor_formatter(ticker.FormatStrFormatter("%.2f"))
-    for i, label in enumerate(ax.get_yticklabels(which="minor")):
+    for label in ax.get_yticklabels(which="minor"):
         label.set_size(7)
     ax.xaxis.set_minor_formatter(ticker.FormatStrFormatter("%.2f"))
-    for i, label in enumerate(ax.get_xticklabels(which="minor")):
+    for label in ax.get_xticklabels(which="minor"):
         label.set_size(7)
     ax.grid(True, "minor", color="0.85", linewidth=0.50, zorder=-20)
     ax.grid(True, "major", color="0.65", linewidth=0.75, zorder=-10)

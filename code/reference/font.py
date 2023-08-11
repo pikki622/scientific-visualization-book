@@ -20,7 +20,7 @@ variants = {
 }
 
 text = "The quick brown fox jumps over the lazy dog"
-for i, variant in enumerate(variants.keys()):
+for variant in variants:
     ax.text(
         1,
         y,
@@ -48,7 +48,7 @@ y += 1
 styles = ["normal", "italic"]
 
 text = "The quick brown fox jumps over the lazy dog"
-for i, style in enumerate(styles):
+for style in styles:
     ax.text(1, y, text, size=9, va="center", style=style, family="Source Sans Pro")
 
     ax.text(
@@ -75,7 +75,7 @@ families = {
 }
 
 text = "The quick brown fox jumps over the lazy dog"
-for i, family in enumerate(families):
+for family in families:
     ax.text(1, y, text, va="center", size=9, family=family, weight="regular")
 
     ax.text(
@@ -112,7 +112,7 @@ weights = {
 }
 
 text = "The quick brown fox jumps over the lazy dog"
-for i, weight in enumerate(["ultralight", "normal", "semibold", "bold", "black"]):
+for weight in ["ultralight", "normal", "semibold", "bold", "black"]:
     ax.text(1, y, text, size=9, va="center", family="Source Sans Pro", weight=weight)
 
     ax.text(
@@ -141,7 +141,7 @@ sizes = {
 }
 
 text = "The quick brown fox"
-for i, size in enumerate(sizes.keys()):
+for size in sizes:
     ax.text(
         1,
         y,

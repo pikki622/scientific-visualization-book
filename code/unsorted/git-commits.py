@@ -86,7 +86,7 @@ def calmap(ax, year, data, origin="upper", weekstart="sun"):
     ax.text(
         1.01,
         0.5,
-        "{}".format(year),
+        f"{year}",
         rotation=90,
         ha="left",
         va="center",
